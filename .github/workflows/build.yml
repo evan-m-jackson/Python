@@ -47,6 +47,9 @@ jobs:
   claude-autofix:
     needs: build
     if: failure()
+    permissions:
+      contents: write
+      pull-requests: write
     uses: evan-m-jackson/claude-pipelines/.github/workflows/claude-autofix-on-failure.yml@main
     with:
       setup_command: >-
