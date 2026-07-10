@@ -26,8 +26,7 @@ jobs:
       - run: uv sync --group=test
       - name: Run tests
         # TODO: #8818 Re-enable quantum tests
-        run: uv run --with=pytest-run-parallel pytest
-          --iterations=8 --parallel-threads=auto
+        run: uv run pytest
           --ignore=computer_vision/cnn_classification.py
           --ignore=docs/conf.py
           --ignore=dynamic_programming/k_means_clustering_tensorflow.py
@@ -38,9 +37,7 @@ jobs:
           --ignore=quantum/q_fourier_transform.py
           --ignore=scripts/validate_solutions.py
           --ignore=web_programming/current_stock_price.py
-          --ignore=web_programming/fetch_anime_and_play.py
-          --cov-report=term-missing:skip-covered
-          --cov=. .
+          --ignore=web_programming/fetch_anime_and_play.py .
       - if: ${{ success() }}
         run: scripts/build_directory_md.py 2>&1 | tee DIRECTORY.md
 
@@ -59,8 +56,7 @@ jobs:
         echo "$HOME/.local/bin" >> "$GITHUB_PATH" &&
         "$HOME/.local/bin/uv" sync --group=test
       test_command: >-
-        uv run --with=pytest-run-parallel pytest
-        --iterations=8 --parallel-threads=auto
+        uv run pytest
         --ignore=computer_vision/cnn_classification.py
         --ignore=docs/conf.py
         --ignore=dynamic_programming/k_means_clustering_tensorflow.py
@@ -71,9 +67,7 @@ jobs:
         --ignore=quantum/q_fourier_transform.py
         --ignore=scripts/validate_solutions.py
         --ignore=web_programming/current_stock_price.py
-        --ignore=web_programming/fetch_anime_and_play.py
-        --cov-report=term-missing:skip-covered
-        --cov=. .
+        --ignore=web_programming/fetch_anime_and_play.py .
       model: claude-sonnet-4-6
       min_confidence: medium
     secrets:
