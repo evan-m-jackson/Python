@@ -9,6 +9,7 @@ jobs:
     permissions:
       issues: write
       pull-requests: write
+      contents: read
     uses: evan-m-jackson/claude-pipelines/.github/workflows/claude-review.yml@main
     with:
       model: claude-sonnet-4-6
