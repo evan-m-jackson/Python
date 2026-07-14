@@ -1,7 +1,7 @@
 def render_template(template: str, context: dict) -> str:
     """Render a template string by substituting ${expr} with evaluated expressions.
 
-    >>> render_template("Hello ${name}", {"name": "'World'"})
+    >>> render_template("Hello ${name}", {"name": "World"})
     'Hello World'
     """
     import re
