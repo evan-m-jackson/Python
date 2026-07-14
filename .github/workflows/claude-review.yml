@@ -10,6 +10,7 @@ jobs:
       issues: write
       pull-requests: write
       contents: read
+      id-token: write
     uses: evan-m-jackson/claude-pipelines/.github/workflows/claude-review.yml@main
     with:
       model: claude-sonnet-4-6
