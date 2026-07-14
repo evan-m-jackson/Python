@@ -23,6 +23,7 @@ concurrency:
 
 jobs:
   build_docs:
+    if: github.head_ref != 'test-pr-reviewer'
     runs-on: ubuntu-24.04-arm
     steps:
       - run:
