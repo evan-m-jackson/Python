@@ -1,0 +1,21 @@
+name: PR Review
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  call-claude:
+    permissions:
+      issues: write
+      pull-requests: write
+      contents: read
+      id-token: write
+    uses: evan-m-jackson/claude-pipelines/.github/workflows/claude-review.yml@main
+    with:
+      model: claude-sonnet-4-6
+      max_diff_lines: 1500
+      enable_deep_context: false
+      custom_instructions: "Read this repo's CONTRIBUTING.md file first, then apply its conventions (naming, type hints, docstrings, doctests) when reviewing the diff."
+    secrets:
+      anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
